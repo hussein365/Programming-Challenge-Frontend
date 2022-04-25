@@ -7,26 +7,12 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { PagesRoutingModule } from './pages-routing.module';
-import { ClientModule } from './clients/client.module';
 import { UIModule } from '../shared/ui/ui.module';
-import { Archive11Component } from './dashboard/archive11/archive11.component';
-import { Archive12Component } from './dashboard/archive12/archive12.component';
-import { Archive13Component } from './dashboard/archive13/archive13.component';
-import { Archive14Component } from './dashboard/archive14/archive14.component';
-import { Archive16Component } from './dashboard/archive16/archive16.component';
-import { Archive18Component } from './dashboard/archive18/archive18.component';
-import { BatchjobArchiveComponent } from './dashboard/batchjob_archive/batchjob_archive.component';
-import { BatchjobBeproNeuComponent } from './dashboard/batchjob_bepro_neu/batchjob_bepro_neu.component';
-import { BatchjobSettingsComponent } from './dashboard/batchjob_settings/batchjob_settings.component';
-import { Browser } from 'selenium-webdriver';
-import { MasterDataComponent } from './dashboard/HelloWorld/MasterData.component';
-import { DataService } from '../core/services/data.service';
-import { MasterdataTaTatypModule } from './dashboard/masterdata-ta-tatyp/masterdata-ta-tatayp.module';
-import { MasterdataTreeModule } from './dashboard/masterdata-tree/masterdata-tree.module';
-import { AppRoutingModule } from '../app-routing.module';
-import { BatchjobArchiveModule } from './dashboard/batchjob_archive/batchjob_archive.module';
-import { JobParamModule } from './dashboard/jobparam/jobparam.module';
-import { Archive12Module } from './dashboard/archive12/archive12.module';
+import { WeatherComponent } from './dashboard/Weather/weather.component';
+import { FootballComponent } from './dashboard/football/football.component';
+import { WeatherModule } from './dashboard/weather/weather.module';
+import { FootballModule } from './dashboard/football/football.module';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -34,23 +20,20 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 @NgModule({
-  declarations: [Archive11Component,
-                 Archive13Component,Archive14Component,Archive16Component,Archive18Component
-                 ,BatchjobBeproNeuComponent,BatchjobSettingsComponent],
+  declarations: [
+               ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    ClientModule,
     UIModule,
     PerfectScrollbarModule,
     DropdownModule,
     MultiSelectModule,
     TableModule,
-    MasterdataTaTatypModule,
-    MasterdataTreeModule,
-    BatchjobArchiveModule,
-    JobParamModule,
-    Archive12Module
+    FootballModule,
+
+
+
   ],
   providers: [
     {

@@ -3,7 +3,6 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { LanguageService } from '../../core/services/language.service';
 
-import { LoginService } from 'src/app/login/login.service';
 const TOKEN_KEY = 'auth-token';
 
 import { EventService } from '../../core/services/event.service';
@@ -13,6 +12,7 @@ import { DOCUMENT } from '@angular/common';
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 import { environment } from '../../../environments/environment';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-horizontaltopbar',
@@ -56,7 +56,7 @@ export class HorizontaltopbarComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    
+
 
     this.element = document.documentElement;
 
@@ -87,7 +87,7 @@ export class HorizontaltopbarComponent implements OnInit, AfterViewInit {
    * Logout the user
    */
   logout(){
-    
+
 
     this.router.navigate(['/login']);
   }

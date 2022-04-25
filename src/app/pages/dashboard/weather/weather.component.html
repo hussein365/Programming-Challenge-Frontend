@@ -1,0 +1,220 @@
+<div class="container-fluid">
+  <app-page-title
+    title="Weather management"
+  ></app-page-title>
+  <div class="row" *ngIf="weatherData">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-md-2">
+            <div class="col-sm-12 col-md-6"></div>
+
+          </div>
+          <div class="col-md-3 ">
+
+            <button type="button" class="btn btn-info waves-effect waves-light bouton " (click)="method()">Day with the smallest temperature spread </button>
+             </div>
+
+
+
+          <!-- Table -->
+          <div class="table-responsive">
+            <table
+              class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline"
+            >
+              <thead>
+                <tr>
+                  <th sortable="day" >
+                    Day
+                  </th>
+                  <th sortable="mxt" >Mxt</th>
+                  <th sortable="mnt" >Mnt</th>
+                  <th sortable="avt" >AvT</th>
+                  <th sortable="avDP" >
+                    AvDP
+                  </th>
+                  <th sortable="hrPTPcpn" >1HrP TPcpn</th>
+                  <th sortable="pdir" >AvSp</th>
+                  <th sortable="avSp" >Dir</th>
+
+                  <th sortable="mxS" >MxS</th>
+                  <th sortable="skyC" >SkyC</th>
+                  <th sortable="mxR" >MxR</th>
+
+                  <th sortable="mn" >Mn</th>
+                  <th sortable="dir" >
+                    PDir
+                  </th>
+                  <th sortable="ravSLP" >R AvSLP</th>
+
+
+
+
+
+                </tr>
+              </thead>
+              <tbody *ngFor="let weather of weatherData">
+                <tr>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.day"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.mxt"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.mnt"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.avt"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.avDP"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.hrPTPcpn"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.avSp"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.dir"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.mxS"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.skyC"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.mxR"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.mn"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.pdir"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+
+                  <td>
+                    <ngb-highlight
+                      [result]="weather.ravSLP"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End table -->
+          <div
+            class="row justify-content-md-between align-items-md-center mt-2"
+          >
+            <div class="col-sm-12 col-md-5">
+              <div
+                class="dataTables_info mb-2"
+                id="tickets-table_info"
+                role="status"
+                aria-live="polite"
+              ><label class="d-inline-flex ">
+                Showing {{ ((page > 0 ? page : 1) - 1) * pageSize + 1 }} to
+                {{
+                  ((page > 0 ? page : 0) - 1) * pageSize + weatherData?.length
+                }}
+                of
+                {{ totalRecords }}
+                entries</label>
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col-sm-12 col-md-5 ">
+              <div
+                class="dataTables_length float-md-end"
+                id="clients-table_length"
+                *ngIf="totalRecords > 10"
+              >
+                <label class="d-inline-flex align-items-center ">
+                  Show
+                  <select
+                    name="clients-table_length"
+                    aria-controls="clients-table"
+                    name="pageSize"
+                    [(ngModel)]="pageSize"
+                    class="form-control form-control-sm mx-2"
+                    (change)="onPageSizeChange()"
+                  >
+                    <option [ngValue]="5">5</option>
+
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25" *ngIf="totalRecords > 25">25</option>
+                    <option [ngValue]="50" *ngIf="totalRecords > 50">
+                      50
+                    </option>
+                    <option [ngValue]="100" *ngIf="totalRecords > 100">
+                      100
+                    </option>
+                  </select>
+                  entries</label
+                >
+              </div>
+              <div class="text-md-right float-md-end pagination-rounded">
+                <ngb-pagination
+                  [(collectionSize)]="totalRecords"
+                  [(page)]="page"
+                  [(pageSize)]="pageSize"
+                  (pageChange)="onPageChange()"
+                  [boundaryLinks]="true"
+                  [maxSize]="5"
+                  [rotate]="true"
+                >
+                </ngb-pagination>
+              </div>
+            </div>
+            <!-- End Pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

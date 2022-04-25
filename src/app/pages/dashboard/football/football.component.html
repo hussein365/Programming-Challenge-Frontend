@@ -1,0 +1,180 @@
+<div class="container-fluid">
+  <app-page-title
+    title="Weather management"
+
+  ></app-page-title>
+  <div class="row" *ngIf="footballData">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-md-2">
+            <div class="col-sm-12 col-md-6"></div>
+
+          </div>
+
+
+          <div class="col-md-3 ">
+
+            <button type="button" class="btn btn-info waves-effect waves-light bouton " (click)="method()">Team with the smallest absolute difference between Goals and Goals Allowed </button>
+             </div>
+
+          <!-- Table -->
+          <div class="table-responsive">
+            <table
+              class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline"
+            >
+              <thead>
+                <tr>
+                  <th sortable="day" >
+                    Team
+                  </th>
+                  <th sortable="mxt" >Games</th>
+                  <th sortable="mnt" >Wins</th>
+                  <th sortable="avt" >Losses</th>
+
+                  <th sortable="hrPTPcpn" >Draws</th>
+                  <th sortable="pdir" >Goals</th>
+                  <th sortable="avSp" >Goals Allowed</th>
+
+                  <th sortable="mxS" >Points</th>
+
+
+
+
+
+
+                </tr>
+              </thead>
+              <tbody *ngFor="let football of footballData">
+                <tr>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.team"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+
+                  <td>
+                    <ngb-highlight
+                      [result]="football.games"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.wins"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.losses"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.draws"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.goals"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.goalsAllowed"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="football.points"
+                      [term]="searchTerm"
+                    ></ngb-highlight>
+                  </td>
+
+
+
+
+
+
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End table -->
+          <div
+            class="row justify-content-md-between align-items-md-center mt-2"
+          >
+            <div class="col-sm-12 col-md-5">
+              <div
+                class="dataTables_info mb-2"
+                id="tickets-table_info"
+                role="status"
+                aria-live="polite"
+              ><label class="d-inline-flex ">
+                Showing {{ ((page > 0 ? page : 1) - 1) * pageSize + 1 }} to
+                {{
+                  ((page > 0 ? page : 0) - 1) * pageSize + footballData?.length
+                }}
+                of
+                {{ totalRecords }}
+                entries</label>
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col-sm-12 col-md-5 ">
+              <div
+                class="dataTables_length float-md-end"
+                id="clients-table_length"
+                *ngIf="totalRecords > 10"
+              >
+                <label class="d-inline-flex align-items-center ">
+                  Show
+                  <select
+                    name="clients-table_length"
+                    aria-controls="clients-table"
+                    name="pageSize"
+                    [(ngModel)]="pageSize"
+                    class="form-control form-control-sm mx-2"
+                    (change)="onPageSizeChange()"
+                  >
+                    <option [ngValue]="5">5</option>
+
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25" *ngIf="totalRecords > 25">25</option>
+                    <option [ngValue]="50" *ngIf="totalRecords > 50">
+                      50
+                    </option>
+                    <option [ngValue]="100" *ngIf="totalRecords > 100">
+                      100
+                    </option>
+                  </select>
+                  entries</label
+                >
+              </div>
+              <div class="text-md-right float-md-end pagination-rounded">
+                <ngb-pagination
+                  [(collectionSize)]="totalRecords"
+                  [(page)]="page"
+                  [(pageSize)]="pageSize"
+                  (pageChange)="onPageChange()"
+                  [boundaryLinks]="true"
+                  [maxSize]="5"
+                  [rotate]="true"
+                >
+                </ngb-pagination>
+              </div>
+            </div>
+            <!-- End Pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

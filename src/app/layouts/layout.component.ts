@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-   
+
   }
 
   ngAfterViewInit() {
